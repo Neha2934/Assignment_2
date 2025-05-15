@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chopped Leaf</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+
+        h2{
+            color:#fe0c0c;
+        }
+        :root {
+            --primary-color: #100909;
+            --secondary-color:#090101;
+            --accent-color: #3498db;
+            --font-family: 'Roboto', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 1;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--primary-color);
+            background-color:aliceblue;
+            line-height: 1.6;
+        }
+
+        header, footer {
+            background-color:dimgray;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        section {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input, textarea {
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: var(--font-family);
+        }
+
+        button {
+            background-color:cadetblue;
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #2980b9;
+            }
+
+        .error {
+            color: red;
+            font-size: 0.9rem;
+        }
+        nav {
+            background-color:chartreuse;
+            padding: 0.5rem;
+        }
+
+            nav ul {
+                list-style: none;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: right;
+            }
+
+            nav li {
+                margin: 0.5rem;
+            }
+
+            nav a {
+                color: black;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+                nav a:hover {
+                    text-decoration: underline;
+                }
+
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+    </style>
+</head>
+<body>
+    <header><nav>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#service">Services</a></li>
+        <li><a href="#images">Photos</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+    </ul>
+</nav>
+        <style>
+            img{
+                border-radius:20px;
+            }
+        </style>
+        <img src="Ch0.png">
+        <h1> Chopped Leaf</h1>
+    </header>
+
+    <div class="container">
+        <section>
+            <img src="bowl3.jpg" />
+            <h2>Bowls</h2>
+            <p></p>
+        </section>
+        <section>
+
+
+            <img src="salad1.jpg" />
+            <h2>Salads</h2>
+        </section>
+        <section>
+
+            <img src="wraps.jpg" />
+            <h2>Wraps</h2>
+        </section>
+    </div>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Us</h2>
+            Chopped Leaf is a Canadian-born restaurant franchise that specializes in fresh, customizable, and flavorful meals, particularly salads, wraps, and bowls. They focus on wholesome ingredients and community connections, aiming to provide a "better-for-you" dining experience. The company is owned and managed by Innovative Food Brands and has over 100 locations in Canada and the USA, with plans for continued expansion .</p>
+        </section>
+       
+        <section id="service">
+            <h2>Services</h2>
+            <p>Chopped Leaf offers a variety of quick-service dining options, including salads, wraps, and bowls, with a focus on fresh ingredients and customizable meals. They also provide catering services for events and offer online ordering through their app. Additionally, Chopped Leaf has a rewards program where customers can earn points for discounts. .</p>
+        </section>
+
+        <section id="images">
+            <img src="team.jpg" />
+            <img src="ch.jpg" />
+    <h2>Photos</h2>
+
+
+        </section>
+    </div>
+
+    <div class="container">
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <span class="error" id="nameError"></span>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error" id="emailError"></span>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <span class="error" id="messageError"></span>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 My Responsive Website</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#contactForm').submit(function (e) {
+                e.preventDefault();
+                let valid = true;
+
+                // Clear previous errors
+                $('.error').text('');
+
+                const name = $('#name').val().trim();
+                const email = $('#email').val().trim();
+                const message = $('#message').val().trim();
+
+                if (name === '') {
+                    $('#nameError').text('Name is required.');
+                    valid = false;
+                }
+                if (email === '') {
+                    $('#emailError').text('Email is required.');
+                    valid = false;
+                } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    $('#emailError').text('Email is not valid.');
+                    valid = false;
+                }
+                if (message === '') {
+                    $('#messageError').text('Message is required.');
+                    valid = false;
+                }
+
+                if (valid) {
+                    alert('Form submitted successfully!');
+                    $(this).trigger('reset');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

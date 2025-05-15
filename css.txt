@@ -1,0 +1,85 @@
+<
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Grid Page</title>
+    <link rel="stylesheet" href="StyleSheet1.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js">
+        $(document).ready(function () {
+    $("#contactForm").on("submit", function (e) {
+        e.preventDefault();
+        const name = $("#name").val().trim();
+        const email = $("#email").val().trim();
+        const message = $("#message").val().trim();
+
+        if (!name || !email || !message) {
+            $("#formMsg").text("All fields are required.").css("color", "red");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            $("#formMsg").text("Enter a valid email.").css("color", "red");
+            return;
+        }
+
+        $("#formMsg").text("Message sent successfully!").css("color", "green");
+        $(this).trigger("reset");
+    });
+});
+    </script>
+</head>
+<body>
+    <header>
+        <h1>My Responsive Web Page</h1>
+        <nav>
+            <a href="#section1">Home</a>
+            <a href="#section2">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="grid-container">
+        <section id="section1" class="grid-item">
+            <h2>Welcome</h2>
+            <p>This is a simple, responsive webpage layout using CSS Grid and jQuery.</p>
+        </section>
+
+        <section id="section2" class="grid-item two-column">
+            <div>
+                <h3>About Us</h3>
+                <p>We create modern, responsive websites using the latest technologies.</p>
+            </div>
+            <div>
+                <h3>Our Mission</h3>
+                <p>To make the web a more accessible and user-friendly place.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="grid-item">
+            <h2>Contact Us</h2>
+            <form id="contactForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required />
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required />
+
+                <label for="message">Message:</label>
+                <textarea id="message" required></textarea>
+
+                <button type="submit">Submit</button>
+                <p id="formMsg"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 My Website. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
